@@ -171,7 +171,7 @@ points(fpkm[12,] ~ jitter(as.numeric(pheno_data$Tissue)),
 plotTranscripts(ballgown::geneIDs(bg)[gene_number], bg, main=c('Gene X in samples'), 
                 sample=c(''))
 
-#Mean plots
-plotMeans('MSTRG.1875', bg_TML_filt, groupvar = "Tissue", legend=FALSE)
+#Mean plots #must be MSTRG number
+plotMeans('MSTRG.1875', bg_filt, groupvar = "Tissue", legend=FALSE)
 ```
 
