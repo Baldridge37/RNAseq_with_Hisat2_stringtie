@@ -1,4 +1,4 @@
-###Trimming the RNAseq data
+#Trimming the RNAseq data
 
 Depending on how your library was made you might want to trim your data differently. 
 
