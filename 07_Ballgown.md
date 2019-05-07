@@ -16,7 +16,7 @@ library(ballgown)
 ```
 
 We will also need some other packages to perform the analysis and handle the data. 
-If not shown otherwise packages can be installed using install.packages(c("package_1", "package_2))
+If not shown otherwise packages can be installed using install.packages(c("package_1", "package_2"))
 
 ```
 library(tidyverse)
