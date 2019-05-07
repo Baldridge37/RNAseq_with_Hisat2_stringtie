@@ -1,4 +1,4 @@
-### Building the Hisat2 reference
+# Building the Hisat2 reference
 
 Before we start we need to build a reference genome to map our RNAseq reads to. 
 This is pretty straightforward but there are a few steps where things can go wrong and cause problems later on.
@@ -58,7 +58,7 @@ sed '{s/Chr/chr/g}' TAIR10_GFF3-gene_only.gff > TAIR10_GFF3-gene_only_correct.gf
 Now we will be able to combine the gene annotations with the output of stringtie.
 
 
-### Masking rRNA genes
+## Masking rRNA genes
 
 When performing RNAseq analysis we don't want to map to rRNA genes.
 There are different ways to remove them but for this analysis I think the easiest is to produce a copy of the genome with rRNA genes masked.
@@ -74,7 +74,7 @@ $ bedtools maskfasta [OPTIONS] -fi TAIR10_reference_wCM.fas -bed TAIR10_GFF3-rRN
 
 The locations of the rRNA genes stored in the GFF file will now be replaced by Ns in the fasta file.
 
-###Building the hisat2 reference
+## Building the hisat2 reference
 
 We can then build the Hisat2 reference with our masked fasta file with a SLURM submission script.
 
