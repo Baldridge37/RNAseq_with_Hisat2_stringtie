@@ -24,3 +24,26 @@ options used are
 -S output sam file
 
 other options are defaults. Full options can be found at https://ccb.jhu.edu/software/hisat2/manual.shtml 
+
+The output of Hisat2 is a sam file, which isn't the most efficent way to store mapped data.
+To save some space we can then sort and compress the sam output.
+This can be done very easily with samtools.
+
+```
+#!/bin/bash -e
+#SBATCH -p nbi-medium # partition (queue)
+#SBATCH --mail-type=END,FAIL # notifications for job done & fail
+#SBATCH --mail-user=EMAIL # send-to address
+#SBATCH --mem=4000
+#SBATCH --job-name="Hisat2_sam"
+#SBATCH --array=0-n
+#SBATCH -c 1
+
+source samtools-1.5
+
+ARRAY=()
+
+srun samtools sort Hisat2_out.${ARRAY[$SLURM_ARRAY_TASK_ID]}.sam -o Hisat2_out.${ARRAY[$SLURM_ARRAY_TASK_ID]}_sorted.bam
+```
+Once we know that the bam files are fine we can remove the sam files to save space
+
