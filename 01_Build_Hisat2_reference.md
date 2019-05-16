@@ -17,19 +17,20 @@ CATTTATTCTGAAGTTCTTCTGCTTGATGATTTTATCCTTAGCCAAAAGGATTGGTGGTTTGAAGACACATCATATCAA
 AAAAGCTATCGCCTCGACGATGCTCTATTTCTATCCTTGTAGCACACATTTTGGCACTCAAAAAAGTATTTTTAGATGT
 ```
 
-a gene annotation (TAIR10_GFF3-gene_only.gff)
+a gene annotation (TAIR10_GFF3-genes.gff)
 
 ```
+Chr1    TAIR10  chromosome      1       30427671        .       .       .       ID=chr1;Name=chr1
 Chr1    TAIR10  gene    3631    5899    .       +       .       ID=AT1G01010;Note=protein_coding_gene;Name=AT1G01010
-Chr1    TAIR10  gene    5928    8737    .       -       .       ID=AT1G01020;Note=protein_coding_gene;Name=AT1G01020
-Chr1    TAIR10  gene    11649   13714   .       -       .       ID=AT1G01030;Note=protein_coding_gene;Name=AT1G01030
-Chr1    TAIR10  gene    23146   31227   .       +       .       ID=AT1G01040;Note=protein_coding_gene;Name=AT1G01040
-Chr1    TAIR10  gene    28500   28706   .       +       .       ID=AT1G01046;Note=miRNA;Name=AT1G01046
-Chr1    TAIR10  gene    31170   33153   .       -       .       ID=AT1G01050;Note=protein_coding_gene;Name=AT1G01050
-Chr1    TAIR10  gene    33379   37871   .       -       .       ID=AT1G01060;Note=protein_coding_gene;Name=AT1G01060
-Chr1    TAIR10  gene    38752   40944   .       -       .       ID=AT1G01070;Note=protein_coding_gene;Name=AT1G01070
-Chr1    TAIR10  gene    44677   44787   .       +       .       ID=AT1G01073;Note=protein_coding_gene;Name=AT1G01073
-Chr1    TAIR10  gene    45296   47019   .       -       .       ID=AT1G01080;Note=protein_coding_gene;Name=AT1G01080
+Chr1    TAIR10  mRNA    3631    5899    .       +       .       ID=AT1G01010.1;Parent=AT1G01010;Name=AT1G01010.1;Index=1
+Chr1    TAIR10  protein 3760    5630    .       +       .       ID=AT1G01010.1-Protein;Name=AT1G01010.1;Derives_from=AT1G01010.1
+Chr1    TAIR10  exon    3631    3913    .       +       .       Parent=AT1G01010.1
+Chr1    TAIR10  five_prime_UTR  3631    3759    .       +       .       Parent=AT1G01010.1
+Chr1    TAIR10  CDS     3760    3913    .       +       0       Parent=AT1G01010.1,AT1G01010.1-Protein;
+Chr1    TAIR10  exon    3996    4276    .       +       .       Parent=AT1G01010.1
+Chr1    TAIR10  CDS     3996    4276    .       +       2       Parent=AT1G01010.1,AT1G01010.1-Protein;
+Chr1    TAIR10  exon    4486    4605    .       +       .       Parent=AT1G01010.1
+
 ```
 And an annotation of what we don't want to map to (i.e. rRNA genes, TAIR10_GFF3-rRNA_XF.gff)
 
@@ -52,7 +53,7 @@ In the .fas file and the rRNA GFF the chromosomes are labelled with lowercase le
 It's easier, and probably safer, to just change it in the gene folder using sed.
 
 ```
-sed '{s/Chr/chr/g}' TAIR10_GFF3-gene_only.gff > TAIR10_GFF3-gene_only_correct.gff
+sed '{s/Chr/chr/g}' TAIR10_GFF3-genes.gff > TAIR10_GFF3-genes_correct.gff
 ```
 
 Now we will be able to combine the gene annotations with the output of stringtie.
