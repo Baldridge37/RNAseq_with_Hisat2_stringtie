@@ -90,6 +90,9 @@ results_genes <- data.frame(geneNames=gene_names_for_result, results_genes)
 
 #The full table will contain all the genes contained within bg_filt
 full_table <- texpr(bg_filt , 'all')
+
+#To get gene-level data use
+full_table_gene <- gexpr(bg_filt)
 ```
 
 We should now have a list of genes/transcripts and their associated p and q values.
