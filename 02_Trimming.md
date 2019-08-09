@@ -15,6 +15,9 @@ This will remove adapters and low quality bases (score <20)
 #SBATCH --array=0-n
 #SBATCH --mem=4000
 
+source cutadapt-1.9.1
+source fastqc-0.11.3
+
 ARRAY=()
 
 #running with illumina defaults.
